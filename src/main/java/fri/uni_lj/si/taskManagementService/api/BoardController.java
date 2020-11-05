@@ -23,25 +23,25 @@ public class BoardController {
         return boardService.addBoard(newBoard);
     }
 
-    @GetMapping("/board/{id}")
-    public Board getBoardById(@PathVariable Long id ) {
-        return boardService.getBoardById(id);
+    @GetMapping("/board/{boardId}")
+    public Board getBoardById(@PathVariable Long boardId ) {
+        return boardService.getBoardById(boardId);
     }
 
     @GetMapping("/board")
-    public List<Board> getBoardById() {
+    public List<Board> getAllBoards() {
         return boardService.getAllBoards();
 
     }
 
-    @PostMapping("/board/{id}")
-    public Board editBoard(@RequestBody Board newBoard, @PathVariable Long id) {
-        return boardService.editBoard(newBoard, id);
+    @PostMapping("/board/{boardId}")
+    public Board editBoard(@RequestBody Board newBoard, @PathVariable Long boardId) {
+        return boardService.editBoard(newBoard, boardId);
     }
 
-    @DeleteMapping("/board/{id}")
-    public String deleteBoardById(@PathVariable Long id ) {
-        return boardService.deleteBoard(id);
+    @DeleteMapping("/board/{boardId}")
+    public String deleteBoard(@PathVariable Long boardId ) {
+        return boardService.deleteBoard(boardId);
     }
 
 }

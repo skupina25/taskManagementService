@@ -1,11 +1,13 @@
 package fri.uni_lj.si.taskManagementService.model;
 
+import org.hibernate.engine.internal.Cascade;
+
 import javax.annotation.sql.DataSourceDefinition;
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "board")
+@Table(name = "BOARD")
 public class Board {
 
     @Id
@@ -16,8 +18,8 @@ public class Board {
     @Column
     private String description;
 
-    //@OneToMany
-    //private List<Task> tasks;
+    @OneToMany(mappedBy = "board", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Task> tasks;
 
     public Board() {
 
@@ -45,5 +47,13 @@ public class Board {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 }
