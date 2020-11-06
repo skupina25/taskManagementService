@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>fri.uni_lj.si</groupId>
 	<artifactId>taskManagementService</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>taskManagementService</name>
 	<description>A microservice for managing boards of tasks.</description>
 
@@ -54,6 +54,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>package</id>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
