@@ -13,16 +13,16 @@ import java.util.UUID;
 public class BoardService {
 
     @Autowired
-    private BoardRepository repository;
+    private BoardRepository boardRepository;
 
     public List<Board> getAllBoards() {
-        List<Board> boards = repository.findAll();
+        List<Board> boards = boardRepository.findAll();
 
         return boards;
     }
 
     public Board getBoardById(Long id) {
-        Optional<Board> board = repository.findById(id);
+        Optional<Board> board = boardRepository.findById(id);
 
         if(board.isPresent()){
             return board.get();
@@ -32,12 +32,12 @@ public class BoardService {
     }
 
     public Board addBoard(Board newBoard) {
-        Board board = repository.save(newBoard);
+        Board board = boardRepository.save(newBoard);
         return board;
     }
 
     public Board editBoard(Board newBoard, Long id) {
-        Optional<Board> board = repository.findById(id);
+        Optional<Board> board = boardRepository.findById(id);
 
         if(board.isPresent()) {
            Board currentBoard = board.get();
@@ -50,17 +50,17 @@ public class BoardService {
                currentBoard.setTitle(newBoard.getTitle());
            }
 
-           return repository.save(currentBoard);
+           return boardRepository.save(currentBoard);
         }
 
         return null;
     }
 
     public String deleteBoard(Long id) {
-        Optional<Board> board = repository.findById(id);
+        Optional<Board> board = boardRepository.findById(id);
 
         if(board.isPresent()) {
-            repository.deleteById(id);
+            boardRepository.deleteById(id);
             return "Board " + id + " deleted.";
         }
         else {
