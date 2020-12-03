@@ -23,7 +23,7 @@ spec:
             - name: DBPASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: db-pass
+                  name: db-pass-task-management
                   key: DBPASSWORD
           ports:
             - containerPort: 8081
