@@ -1,5 +1,6 @@
 package fri.uni_lj.si.taskManagementService.api;
 
+import fri.uni_lj.si.taskManagementService.config.RestProperties;
 import fri.uni_lj.si.taskManagementService.model.Board;
 import fri.uni_lj.si.taskManagementService.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,13 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
-//    @Autowired
-//    private RestProperties restProperties;
+    @Autowired
+    private RestProperties restProperties;
+
 
     @GetMapping("/hello")
     public String helloWorld() {
-        return "Hello world";
+        return "Hello world! Maintenance mode: " + restProperties.getMaintenanceMode();
     }
 
     @PostMapping("/board")
