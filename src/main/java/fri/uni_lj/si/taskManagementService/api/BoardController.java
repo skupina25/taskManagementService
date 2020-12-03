@@ -8,10 +8,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("api/v1")
 public class BoardController {
 
     @Autowired
     private BoardService boardService;
+
+//    @Autowired
+//    private RestProperties restProperties;
 
     @GetMapping("/hello")
     public String helloWorld() {
