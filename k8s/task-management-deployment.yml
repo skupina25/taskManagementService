@@ -18,7 +18,7 @@ spec:
             requests:
               cpu: "30m"
             limits:
-              cpu: "50m"
+              cpu: "40m"
           name: task-management-service
           env:
             - name: DBURL
