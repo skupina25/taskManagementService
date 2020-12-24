@@ -3,7 +3,6 @@ package fri.uni_lj.si.taskManagementService.api;
 
 import fri.uni_lj.si.taskManagementService.model.Board;
 import fri.uni_lj.si.taskManagementService.model.Task;
-import fri.uni_lj.si.taskManagementService.service.BoardService;
 import fri.uni_lj.si.taskManagementService.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +30,8 @@ public class TaskController {
 
     @PostMapping("/board/{boardId}/task")
     public Board addTaskToBoard(@RequestBody Task newTask, @PathVariable Long boardId) {
+
+
         return taskService.addTaskToBoard(newTask, boardId);
     }
 

@@ -45,7 +45,6 @@ public class TaskService {
 
         if(board.isPresent()) {
 
-
             Board boardObj = board.get();
             newTask.setBoard(boardObj);
             List<Task> boardTasksList = boardObj.getTasks();
