@@ -40,7 +40,7 @@ public class BoardService {
 
         if(board.getTeamId() != null) {
 
-            final String uri = "http://docker.host.internal:8082/api/v1/team/{teamId}/boards";
+            final String uri = "http://localhost:8082/api/v1/team/{teamId}/boards";
             RestTemplate restTemplate = new RestTemplate();
 
             String response = restTemplate.postForObject(uri, board.getId(), String.class, board.getTeamId());
@@ -70,7 +70,7 @@ public class BoardService {
 
                 // edit the board id on teamManagementService
 
-                final String uri = "http://docker.host.internal:8082/api/v1/team/{teamId}/boards/{boardId}";
+                final String uri = "http://localhost:8082/api/v1/team/{teamId}/boards/{boardId}";
                 RestTemplate restTemplate = new RestTemplate();
 
                 String response = restTemplate.postForObject(uri, newBoard.getId(), String.class, newBoard.getTeamId(), currentBoard.getId());
@@ -92,7 +92,7 @@ public class BoardService {
 
             if(boardObj.getTeamId() != null) {
 
-                final String uri = "http://docker.host.internal:8082/api/v1/team/{teamId}/boards/{boardId}";
+                final String uri = "http://localhost:8082/api/v1/team/{teamId}/boards/{boardId}";
                 RestTemplate restTemplate = new RestTemplate();
 
                 restTemplate.delete(uri, boardObj.getTeamId(), boardObj.getId());
