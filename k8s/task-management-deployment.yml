@@ -13,12 +13,12 @@ spec:
         app: task-management-service
     spec:
       containers:
-        - image: zigakleine/task-management-service:1.0.0-SNAPSHOT-15.1
-          resources:
-            requests:
-              cpu: "60m"
-            limits:
-              cpu: "80m"
+        - image: zigakleine/task-management-service:1.0.0-SNAPSHOT-25.1
+#          resources:
+#            requests:
+#              cpu: "80m"
+#            limits:
+#              cpu: "90m"
           name: task-management-service
           env:
             - name: DBURL
@@ -38,13 +38,13 @@ spec:
             httpGet:
               path: /api/v1/checks/health/liveness
               port: server
-            initialDelaySeconds: 360
+            initialDelaySeconds: 400
             periodSeconds: 3
           readinessProbe:
             httpGet:
               path: /api/v1/checks/health/readiness
               port: server
-            initialDelaySeconds: 360
+            initialDelaySeconds: 400
             periodSeconds: 3
 ---
 apiVersion: v1
