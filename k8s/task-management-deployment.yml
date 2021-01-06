@@ -16,9 +16,9 @@ spec:
         - image: zigakleine/task-management-service:1.0.0-SNAPSHOT-15.1
           resources:
             requests:
-              cpu: "30m"
+              cpu: "60m"
             limits:
-              cpu: "40m"
+              cpu: "80m"
           name: task-management-service
           env:
             - name: DBURL
@@ -31,10 +31,21 @@ spec:
                   name: db-pass-task-management
                   key: DBPASSWORD
           ports:
-            - containerPort: 8081
+            - containerPort: 8083
               name: server
               protocol: TCP
-
+          livenessProbe:
+            httpGet:
+              path: /api/v1/checks/health/liveness
+              port: server
+            initialDelaySeconds: 360
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /api/v1/checks/health/readiness
+              port: server
+            initialDelaySeconds: 360
+            periodSeconds: 3
 ---
 apiVersion: v1
 kind: Service
@@ -43,7 +54,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 8081
+    - port: 8083
       protocol: TCP
       targetPort: server
   selector:

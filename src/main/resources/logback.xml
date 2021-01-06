@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %p %marker %m %X %ex %n"/>
+        </Console>
+        <Socket name="LOGSTASH" host="240a4ad4-90a9-4565-bcdb-189047aecd2c-ls.logit.io"
+                port="10087" protocol="udp">
+            <JSONLayout complete="false" compact="true" eventEol="true" charset="UTF-8" properties="true"/>
+        </Socket>
+    </Appenders>
+    <Loggers>
+        <root level="all">
+            <appender-ref ref="STDOUT" level="info"/>
+            <appender-ref ref="LOGSTASH" level="trace" />
+        </root>
+    </Loggers>
+</configuration>
